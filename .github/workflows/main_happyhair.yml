@@ -21,10 +21,10 @@ jobs:
           dotnet-version: '8.0'
 
       - name: Build with dotnet
-        run: dotnet build *.sln --configuration Release  # Adicionado *.sln para encontrar a solução
+        run: dotnet build --configuration Release  # Remove o *.sln pois o comando encontrará automaticamente o .csproj
 
       - name: dotnet publish
-        run: dotnet publish *.sln -c Release -o ${{env.DOTNET_ROOT}}/myapp  # Adicionado *.sln
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
